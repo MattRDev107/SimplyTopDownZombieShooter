@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoonlanderCode.MathTools
+namespace RitchiesCode.Utilities
 {
 	public static class MathT
 	{
