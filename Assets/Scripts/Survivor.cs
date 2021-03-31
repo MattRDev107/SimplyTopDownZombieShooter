@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Survivor : MonoBehaviour
 {
+	[SerializeField] private float _moveSpeed = 5.0f;
 	public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
-	private float _moveSpeed = 5.0f;
 
 	private Rigidbody2D _rb;
 

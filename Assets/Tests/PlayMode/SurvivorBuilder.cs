@@ -16,16 +16,9 @@ public class SurvivorBuilder
 		return this;
 	}
 
-	public SurvivorBuilder WithMoveSpeed(float moveSpeed)
-	{
-		this._moveSpeed = moveSpeed;
-		return this;
-	}
-
 	private Survivor Build()
 	{
 		var surviver = _gameObject.AddComponent<Survivor>();
-		surviver.MoveSpeed = _moveSpeed;
 		return surviver;
 	}
 

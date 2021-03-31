@@ -57,14 +57,12 @@ namespace TopDownShooter.Tests.PlayMode
 				Survivor survivor = A.Survivor.With<Rigidbody2D>();
 				survivor.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
-				float duration = Time.time + 1.0f;
-				while (Time.time < duration)
-				{
-					survivor.Move(Vector2.up);
-					yield return new WaitForFixedUpdate();
-				}
-
-				Assert.AreEqual( new Vector3(0f, 1f,0f) * survivor.MoveSpeed, MathT.VectorRound(survivor.transform.position));
+				survivor.Move(Vector2.up);
+				
+				yield return new WaitForFixedUpdate();
+				
+				Assert.AreEqual(MathT.VectorRound(new Vector3(0f, 1f,0f) * survivor.MoveSpeed * Time.fixedDeltaTime,2), 
+					MathT.VectorRound(survivor.transform.position, 2));
 			}
 
 			[UnityTest]
@@ -73,14 +71,12 @@ namespace TopDownShooter.Tests.PlayMode
 				Survivor survivor = A.Survivor.With<Rigidbody2D>();
 				survivor.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
-				float duration = Time.time + 1.0f;
-				while (Time.time < duration)
-				{
-					survivor.Move(Vector2.down);
-					yield return new WaitForFixedUpdate();
-				}
+				survivor.Move(Vector2.down);
+				
+				yield return new WaitForFixedUpdate();
 
-				Assert.AreEqual(new Vector3(0f, -1f, 0f) * survivor.MoveSpeed, MathT.VectorRound(survivor.transform.position));
+				Assert.AreEqual(MathT.VectorRound(new Vector3(0f, -1f, 0f) * survivor.MoveSpeed * Time.fixedDeltaTime,2), 
+					MathT.VectorRound(survivor.transform.position, 2));
 			}
 
 			[UnityTest]
@@ -89,14 +85,11 @@ namespace TopDownShooter.Tests.PlayMode
 				Survivor survivor = A.Survivor.With<Rigidbody2D>();
 				survivor.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
-				float duration = Time.time + 1.0f;
-				while (Time.time < duration)
-				{
-					survivor.Move(Vector2.left);
-					yield return new WaitForFixedUpdate();
-				}
+				survivor.Move(Vector2.left);
+				yield return new WaitForFixedUpdate();
 
-				Assert.AreEqual(new Vector3(-1f, 0f, 0f) * survivor.MoveSpeed, MathT.VectorRound(survivor.transform.position));
+				Assert.AreEqual(MathT.VectorRound(new Vector3(-1f, 0f, 0f) * survivor.MoveSpeed * Time.fixedDeltaTime,2), 
+					MathT.VectorRound(survivor.transform.position, 2));
 			}
 
 			[UnityTest]
@@ -105,14 +98,11 @@ namespace TopDownShooter.Tests.PlayMode
 				Survivor survivor = A.Survivor.With<Rigidbody2D>();
 				survivor.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
 
-				float duration = Time.time + 1.0f;
-				while (Time.time < duration)
-				{
-					survivor.Move(Vector2.right);
-					yield return new WaitForFixedUpdate();
-				}
+				survivor.Move(Vector2.right);
+				yield return new WaitForFixedUpdate();
 
-				Assert.AreEqual(new Vector3(1f, 0f, 0f) * survivor.MoveSpeed, MathT.VectorRound(survivor.transform.position));
+				Assert.AreEqual(MathT.VectorRound(new Vector3(1f, 0f, 0f) * survivor.MoveSpeed * Time.fixedDeltaTime,2), 
+					MathT.VectorRound(survivor.transform.position, 2));
 			}
 		}
 	}
