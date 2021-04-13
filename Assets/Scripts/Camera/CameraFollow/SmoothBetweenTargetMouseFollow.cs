@@ -1,4 +1,4 @@
-﻿using MoonlanderCode.Input;
+﻿using MoonlanderCode.Core;
 using UnityEngine;
 
 public class SmoothBetweenTargetMouseFollow : MonoBehaviour, IFollow
@@ -17,7 +17,7 @@ public class SmoothBetweenTargetMouseFollow : MonoBehaviour, IFollow
 	{
 		_input = new PlayerInputs();
 
-		_input.Player.MousePos.performed += ctx => _mousePos = ctx.ReadValue<Vector2>();
+		_input.CharacterControls.MousePos.performed += ctx => _mousePos = ctx.ReadValue<Vector2>();
 	}
 
 	public void UpdateTargetPosition(Vector3 targetPosition)
@@ -32,11 +32,11 @@ public class SmoothBetweenTargetMouseFollow : MonoBehaviour, IFollow
 		{
 			Vector2 norm = mouseOffset.normalized;
 			newTarget = new Vector3(norm.x * maxRadius + targetPosition.x, norm.y * maxRadius + targetPosition.y, -10f);
-			_position = Vector3.Lerp(targetPosition, newTarget, SmoothTime);
+			_position = Vector3.Lerp(_position, newTarget, SmoothTime);
 		}
 		else
 		{
-			_position = Vector3.Lerp(targetPosition, newTarget, SmoothTime);
+			_position = Vector3.Lerp(_position, newTarget, SmoothTime);
 		}
 	}
 

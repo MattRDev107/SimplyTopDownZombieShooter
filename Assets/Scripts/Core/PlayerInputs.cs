@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace MoonlanderCode.Input
+namespace MoonlanderCode.Core
 {
     public class @PlayerInputs : IInputActionCollection, IDisposable
     {
@@ -17,7 +17,7 @@ namespace MoonlanderCode.Input
     ""name"": ""PlayerInputAction"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""CharacterControls"",
             ""id"": ""57fad1bd-6f11-40e4-a8bc-d793da348e24"",
             ""actions"": [
                 {
@@ -42,7 +42,7 @@ namespace MoonlanderCode.Input
                     ""id"": ""d90e74f6-8bee-44df-9dd0-75a08aa75bf9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Shoot"",
@@ -354,20 +354,20 @@ namespace MoonlanderCode.Input
     ],
     ""controlSchemes"": []
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-            m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
-            m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-            m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-            m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
-            m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
-            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-            m_Player_ToggleFlashlight = m_Player.FindAction("ToggleFlashlight", throwIfNotFound: true);
-            m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
-            m_Player_PrimarySlot = m_Player.FindAction("PrimarySlot", throwIfNotFound: true);
-            m_Player_SecondarySlot = m_Player.FindAction("SecondarySlot", throwIfNotFound: true);
-            m_Player_PistolSlot = m_Player.FindAction("PistolSlot", throwIfNotFound: true);
+            // CharacterControls
+            m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
+            m_CharacterControls_Movement = m_CharacterControls.FindAction("Movement", throwIfNotFound: true);
+            m_CharacterControls_MousePos = m_CharacterControls.FindAction("MousePos", throwIfNotFound: true);
+            m_CharacterControls_Sprint = m_CharacterControls.FindAction("Sprint", throwIfNotFound: true);
+            m_CharacterControls_Shoot = m_CharacterControls.FindAction("Shoot", throwIfNotFound: true);
+            m_CharacterControls_Reload = m_CharacterControls.FindAction("Reload", throwIfNotFound: true);
+            m_CharacterControls_Aim = m_CharacterControls.FindAction("Aim", throwIfNotFound: true);
+            m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
+            m_CharacterControls_ToggleFlashlight = m_CharacterControls.FindAction("ToggleFlashlight", throwIfNotFound: true);
+            m_CharacterControls_ThrowGrenade = m_CharacterControls.FindAction("ThrowGrenade", throwIfNotFound: true);
+            m_CharacterControls_PrimarySlot = m_CharacterControls.FindAction("PrimarySlot", throwIfNotFound: true);
+            m_CharacterControls_SecondarySlot = m_CharacterControls.FindAction("SecondarySlot", throwIfNotFound: true);
+            m_CharacterControls_PistolSlot = m_CharacterControls.FindAction("PistolSlot", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -414,84 +414,84 @@ namespace MoonlanderCode.Input
             asset.Disable();
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_Movement;
-        private readonly InputAction m_Player_MousePos;
-        private readonly InputAction m_Player_Sprint;
-        private readonly InputAction m_Player_Shoot;
-        private readonly InputAction m_Player_Reload;
-        private readonly InputAction m_Player_Aim;
-        private readonly InputAction m_Player_Interact;
-        private readonly InputAction m_Player_ToggleFlashlight;
-        private readonly InputAction m_Player_ThrowGrenade;
-        private readonly InputAction m_Player_PrimarySlot;
-        private readonly InputAction m_Player_SecondarySlot;
-        private readonly InputAction m_Player_PistolSlot;
-        public struct PlayerActions
+        // CharacterControls
+        private readonly InputActionMap m_CharacterControls;
+        private ICharacterControlsActions m_CharacterControlsActionsCallbackInterface;
+        private readonly InputAction m_CharacterControls_Movement;
+        private readonly InputAction m_CharacterControls_MousePos;
+        private readonly InputAction m_CharacterControls_Sprint;
+        private readonly InputAction m_CharacterControls_Shoot;
+        private readonly InputAction m_CharacterControls_Reload;
+        private readonly InputAction m_CharacterControls_Aim;
+        private readonly InputAction m_CharacterControls_Interact;
+        private readonly InputAction m_CharacterControls_ToggleFlashlight;
+        private readonly InputAction m_CharacterControls_ThrowGrenade;
+        private readonly InputAction m_CharacterControls_PrimarySlot;
+        private readonly InputAction m_CharacterControls_SecondarySlot;
+        private readonly InputAction m_CharacterControls_PistolSlot;
+        public struct CharacterControlsActions
         {
             private @PlayerInputs m_Wrapper;
-            public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Movement => m_Wrapper.m_Player_Movement;
-            public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
-            public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-            public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-            public InputAction @Reload => m_Wrapper.m_Player_Reload;
-            public InputAction @Aim => m_Wrapper.m_Player_Aim;
-            public InputAction @Interact => m_Wrapper.m_Player_Interact;
-            public InputAction @ToggleFlashlight => m_Wrapper.m_Player_ToggleFlashlight;
-            public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
-            public InputAction @PrimarySlot => m_Wrapper.m_Player_PrimarySlot;
-            public InputAction @SecondarySlot => m_Wrapper.m_Player_SecondarySlot;
-            public InputAction @PistolSlot => m_Wrapper.m_Player_PistolSlot;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public CharacterControlsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Movement => m_Wrapper.m_CharacterControls_Movement;
+            public InputAction @MousePos => m_Wrapper.m_CharacterControls_MousePos;
+            public InputAction @Sprint => m_Wrapper.m_CharacterControls_Sprint;
+            public InputAction @Shoot => m_Wrapper.m_CharacterControls_Shoot;
+            public InputAction @Reload => m_Wrapper.m_CharacterControls_Reload;
+            public InputAction @Aim => m_Wrapper.m_CharacterControls_Aim;
+            public InputAction @Interact => m_Wrapper.m_CharacterControls_Interact;
+            public InputAction @ToggleFlashlight => m_Wrapper.m_CharacterControls_ToggleFlashlight;
+            public InputAction @ThrowGrenade => m_Wrapper.m_CharacterControls_ThrowGrenade;
+            public InputAction @PrimarySlot => m_Wrapper.m_CharacterControls_PrimarySlot;
+            public InputAction @SecondarySlot => m_Wrapper.m_CharacterControls_SecondarySlot;
+            public InputAction @PistolSlot => m_Wrapper.m_CharacterControls_PistolSlot;
+            public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void SetCallbacks(IPlayerActions instance)
+            public static implicit operator InputActionMap(CharacterControlsActions set) { return set.Get(); }
+            public void SetCallbacks(ICharacterControlsActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+                if (m_Wrapper.m_CharacterControlsActionsCallbackInterface != null)
                 {
-                    @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                    @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                    @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                    @MousePos.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePos;
-                    @MousePos.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePos;
-                    @MousePos.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMousePos;
-                    @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                    @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                    @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                    @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                    @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                    @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
-                    @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
-                    @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
-                    @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
-                    @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
-                    @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
-                    @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
-                    @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                    @ToggleFlashlight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleFlashlight;
-                    @ToggleFlashlight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleFlashlight;
-                    @ToggleFlashlight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleFlashlight;
-                    @ThrowGrenade.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrowGrenade;
-                    @ThrowGrenade.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrowGrenade;
-                    @ThrowGrenade.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrowGrenade;
-                    @PrimarySlot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySlot;
-                    @PrimarySlot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySlot;
-                    @PrimarySlot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySlot;
-                    @SecondarySlot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySlot;
-                    @SecondarySlot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySlot;
-                    @SecondarySlot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySlot;
-                    @PistolSlot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPistolSlot;
-                    @PistolSlot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPistolSlot;
-                    @PistolSlot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPistolSlot;
+                    @Movement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMovement;
+                    @Movement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMovement;
+                    @Movement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMovement;
+                    @MousePos.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMousePos;
+                    @MousePos.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMousePos;
+                    @MousePos.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMousePos;
+                    @Sprint.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSprint;
+                    @Sprint.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSprint;
+                    @Sprint.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSprint;
+                    @Shoot.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnShoot;
+                    @Shoot.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnShoot;
+                    @Shoot.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnShoot;
+                    @Reload.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnReload;
+                    @Reload.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnReload;
+                    @Reload.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnReload;
+                    @Aim.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnAim;
+                    @Aim.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnAim;
+                    @Aim.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnAim;
+                    @Interact.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                    @ToggleFlashlight.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnToggleFlashlight;
+                    @ToggleFlashlight.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnToggleFlashlight;
+                    @ToggleFlashlight.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnToggleFlashlight;
+                    @ThrowGrenade.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnThrowGrenade;
+                    @ThrowGrenade.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnThrowGrenade;
+                    @ThrowGrenade.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnThrowGrenade;
+                    @PrimarySlot.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPrimarySlot;
+                    @PrimarySlot.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPrimarySlot;
+                    @PrimarySlot.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPrimarySlot;
+                    @SecondarySlot.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSecondarySlot;
+                    @SecondarySlot.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSecondarySlot;
+                    @SecondarySlot.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSecondarySlot;
+                    @PistolSlot.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPistolSlot;
+                    @PistolSlot.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPistolSlot;
+                    @PistolSlot.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPistolSlot;
                 }
-                m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+                m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
                 if (instance != null)
                 {
                     @Movement.started += instance.OnMovement;
@@ -533,8 +533,8 @@ namespace MoonlanderCode.Input
                 }
             }
         }
-        public PlayerActions @Player => new PlayerActions(this);
-        public interface IPlayerActions
+        public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
+        public interface ICharacterControlsActions
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnMousePos(InputAction.CallbackContext context);

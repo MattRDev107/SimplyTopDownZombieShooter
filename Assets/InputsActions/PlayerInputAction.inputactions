@@ -2,7 +2,7 @@
     "name": "PlayerInputAction",
     "maps": [
         {
-            "name": "Player",
+            "name": "CharacterControls",
             "id": "57fad1bd-6f11-40e4-a8bc-d793da348e24",
             "actions": [
                 {
@@ -27,7 +27,7 @@
                     "id": "d90e74f6-8bee-44df-9dd0-75a08aa75bf9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "Shoot",

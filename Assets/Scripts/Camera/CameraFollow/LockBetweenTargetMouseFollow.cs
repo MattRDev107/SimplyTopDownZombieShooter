@@ -1,9 +1,5 @@
-﻿using MoonlanderCode.Input;
-using RitchiesCode.Utilities;
-using System;
-using System.Runtime.CompilerServices;
+﻿using MoonlanderCode.Core;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class LockBetweenTargetMouseFollow : MonoBehaviour, IFollow
 {
@@ -20,7 +16,7 @@ public class LockBetweenTargetMouseFollow : MonoBehaviour, IFollow
 	{
 		_input = new PlayerInputs();
 
-		_input.Player.MousePos.performed += ctx => _mousePos = ctx.ReadValue<Vector2>();
+		_input.CharacterControls.MousePos.performed += ctx => _mousePos = ctx.ReadValue<Vector2>();
 	}
 
 	public void UpdateTargetPosition(Vector3 targetPosition)
