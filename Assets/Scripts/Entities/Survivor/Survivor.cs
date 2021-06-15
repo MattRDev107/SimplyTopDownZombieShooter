@@ -18,7 +18,7 @@ namespace TDS.Entites.Survivor
 		{
 			_movement = gameObject.GetComponent<IMovement>();
 
-			//? Need to change to a weapon equiped system
+			//! Need to change to a weapon equipped system
 			_equipedWeapon = GameObjectT.FindChildGameObjectWithName(this.gameObject, "PrimaryWeaponSlot").GetComponentInChildren<IWeapon>();
 		}
 
@@ -41,9 +41,9 @@ namespace TDS.Entites.Survivor
 			transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
 		}
 
-		public void Shoot(bool canFire)
+		public void Shoot()
 		{
-			_equipedWeapon.Fire(canFire);
+			_equipedWeapon.Fire();
 		}
 	}
 }

@@ -78,7 +78,7 @@ namespace TDS.Core
 
 		private void Shoot(bool canFire)
 		{
-			_survivor.Shoot(canFire);
+			_survivor.Shoot();
 		}
 	}
 }

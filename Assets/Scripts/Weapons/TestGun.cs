@@ -8,20 +8,17 @@ namespace TDS.Weapons
     {
 		public float _range = 25.0f;
 		public Transform _endOfBarral;
-		private bool _canFire;
-        private Vector2 _direction;
-        private GameObject _projectile;
 
-		private IFireBullet _bullet;
+		private IFireProjectile _Prejectile;
 
 		public void Awake()
 		{
-			_bullet = gameObject.GetComponent<IFireBullet>();
+			_Prejectile = gameObject.GetComponent<IFireProjectile>();
 		}
 
-		public void Fire(bool canFire)
+		public void Fire()
 		{
-			_bullet.FireBullet(_endOfBarral.position, transform.up, _range);
+			_Prejectile.FireBullet(_endOfBarral.position, transform.up, _range);
 		}
 
 		public void Reload()

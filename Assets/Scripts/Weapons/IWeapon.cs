@@ -5,7 +5,7 @@ namespace TDS.Weapons
 {
 	interface IWeapon
 	{
-		public void Fire(bool canFire);
+		public void Fire();
 		public void Reload();
 	}
 }
